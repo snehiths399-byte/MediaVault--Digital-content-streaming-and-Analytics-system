@@ -1,0 +1,40 @@
+import java.util.PriorityQueue;
+
+class StreamingRequest implements Comparable<StreamingRequest> {
+    int priority;
+    String userName;
+
+    StreamingRequest(int priority, String userName) {
+        this.priority = priority;
+        this.userName = userName;
+    }
+
+    @Override
+    public int compareTo(StreamingRequest other) {
+        return other.priority - this.priority;
+    }
+}
+
+public class MediaVaultPriorityQueue {
+    public static void main(String[] args) {
+
+        PriorityQueue<StreamingRequest> pq = new PriorityQueue<>();
+
+        pq.add(new StreamingRequest(5, "Premium User"));
+        pq.add(new StreamingRequest(4, "Gold User"));
+        pq.add(new StreamingRequest(3, "Basic User"));
+        pq.add(new StreamingRequest(2, "Free User"));
+
+        System.out.println("Streaming Requests Processing Order:");
+
+        while (!pq.isEmpty()) {
+            StreamingRequest request = pq.poll();
+
+            System.out.println(
+                request.userName +
+                " (Priority: " +
+                request.priority + ")"
+            );
+        }
+    }
+}
