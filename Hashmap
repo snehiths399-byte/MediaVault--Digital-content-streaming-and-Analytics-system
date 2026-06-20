@@ -1,0 +1,33 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class MediaVaultHashing {
+    public static void main(String[] args) {
+
+        HashMap<Integer, String> contentMap = new HashMap<>();
+
+        contentMap.put(101, "Avengers");
+        contentMap.put(102, "Stranger Things");
+        contentMap.put(103, "Money Heist");
+        contentMap.put(104, "Wednesday");
+
+        System.out.println("Available Content:");
+
+        for (Integer id : contentMap.keySet()) {
+            System.out.println(id + " -> " + contentMap.get(id));
+        }
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("\nEnter Content ID to Search: ");
+        int searchId = sc.nextInt();
+
+        if (contentMap.containsKey(searchId)) {
+            System.out.println("Content Found: " + contentMap.get(searchId));
+        } else {
+            System.out.println("Content Not Found");
+        }
+
+        sc.close();
+    }
+}
